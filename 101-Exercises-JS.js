@@ -1327,22 +1327,31 @@ addToDone("Exercise 80 is correct.")
 
 // Exercise 81
 // Write a function definition named shortestString that takes in an array of strings and returns the shortest string in the array.
-function shortestString(x){
-  var shortLength = Infinity;
-  var shortest = "";
+// function shortestString(x){
+//     var shortLength = Infinity;
+//     var shortest = "";
 
-  if (x.length > 0) {
-    for (var i = 0; i < x.length; i++) {
-      if (typeof x[i] === 'string' && x[i].length < shortLength) {
-        shortest = x[i];
-        shortLength = x[i].length;
-      }
+//     if (x.length > 0) {
+//         for (var i = 0; i < x.length; i++) {
+//             if (typeof x[i] === 'string' && x[i].length < shortLength) {
+//                 shortest = x[i];
+//                 shortLength = x[i].length;
+//             }
+//         }
+//     }
+
+//     return shortest;
+// }
+function shortestString(x) {
+  const shortest = x.reduce(function(a,b) {
+    if(a.length < b.length) {
+      return a;
+    } else {
+      return b;
     }
-  }
-
+  });
   return shortest;
 }
-
 assert(shortestString(["kiwi", "mango", "strawberry"]), "kiwi", "Exercise 81");
 assert(shortestString(["hello", "everybody"]), "hello", "Exercise 81");
 assert(shortestString(["mary", "had", "a", "little", "lamb"]), "a", "Exercise 81");
@@ -1424,10 +1433,12 @@ addToDone("Exercise 84 is correct.")
 
 // Exercise 85
 // Write a function named flatten that takes in an array of arrays. Return the flattened array.
+// function flatten(arrays) {
+//   return arrays.reduce((a, b) => a.concat(b), []);
+// }
 function flatten(arrays) {
-  return arrays.reduce((a, b) => a.concat(b), []);
+  return arrays.flat();
 }
-
 assert(flatten([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6], "Exercise 85");
 assert(flatten([[1, 2, 3], [1, 2, 3], [1, 2, 3]]), [1, 2, 3, 1, 2, 3, 1, 2, 3], "Exercise 85");
 assert(flatten([["tomato", "mango", "kiwi"], ["eggplant", "broccoli"]]), ["tomato", "mango", "kiwi", "eggplant", "broccoli"], "Exercise 85");
